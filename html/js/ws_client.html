@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>ws测试</h1>
+
+<script>
+    var wxUrl = "ws://swoole.study.cn:8812";
+    var webSocket = new WebSocket(wxUrl);
+
+    //实例对象 的onOpen属性
+    webSocket.onopen = function (evt) {
+        webSocket.send("hello-websocket");
+        console.log("conected-swoole-success");
+    }
+
+    //实例化 onmessage
+    webSocket.onmessage = function (evt) {
+        console.log("wx-server-return-data: "+ evt.data);
+    }
+
+    //onclose
+    webSocket.onclose = function (evt) {
+        console.log("close");
+    }
+
+    //on error
+    webSocket.onerror = function (evt, e) {
+        console.log("error: "+ evt.data);
+    }
+
+</script>
+
+
+</body>
+</html>
